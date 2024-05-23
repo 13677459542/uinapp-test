@@ -1,5 +1,8 @@
 <template>
 	<view>
+		<!-- <my-search :bgcolor="'pink'" :radius="3"></my-search> -->
+		<my-search @click="gotoSearch"></my-search>
+		
 		<view class="scroll-view-container">
 			<scroll-view class="left-scroll-view" scroll-y="true" :style="{height: wh + 'px'}">
 				<!-- block并不是一个组件，它只是一个包裹性质的容器，不会在页面中做任何渲染。 -->
@@ -45,8 +48,8 @@
 		onLoad() {
 			// 获取当前系统的信息
 			const sysInfo = uni.getSystemInfoSync()
-			// 为 wh 窗口可用高度动态赋值
-			this.wh = sysInfo.windowHeight
+			// 为 wh 窗口可用高度动态赋值，可用高度 = 屏幕高度 - navigationBar高度 - tabBar高度。 这里需要再减去 自定义的search组件高度50.
+			this.wh = sysInfo.windowHeight - 50
 			
 			// 调用获取分类列表数据的方法
 			this.getCateList()
@@ -75,6 +78,11 @@
 			  uni.navigateTo({
 			    url: '/subpkg/goods_list/goods_list?cid=' + item3.cat_id
 			  })
+			},
+			gotoSearch(){
+				uni.navigateTo({
+					url:'/subpkg/search/search'
+				})
 			}
 		}
 	}
