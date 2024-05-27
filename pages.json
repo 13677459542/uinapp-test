@@ -42,7 +42,10 @@
 				"path" : "goods_list/goods_list",
 				"style" : 
 				{
-					"navigationBarTitleText" : ""
+					"navigationBarTitleText" : "",
+					"onReachBottomDistance": 150, // 设置触底事件距离
+					"enablePullDownRefresh": true, // 开启下拉刷新
+					"backgroundColor": "#f8f8f8"
 				}
 			},
 			{
